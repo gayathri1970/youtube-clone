@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <i class="fas fa-bars menu-icon"></i>
+            <img src="https://www.youtube.com/img/desktop/yt_1200.png" alt="YouTube Logo" class="logo">
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-icons">
+            <i class="fas fa-video"></i>
+            <i class="fas fa-th"></i>
+            <i class="fas fa-bell"></i>
+            <div class="user-icon" id="user-icon">G</div>
+        </div>
+         <!-- Login Modal -->
+    <div class="login-modal" id="login-modal">
+        <div class="login-box">
+            <img src="https://www.youtube.com/img/desktop/yt_1200.png" alt="YouTube Logo">
+            <h2>Sign in</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                    <div class="error-message" id="email-error">Please enter a valid email</div>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                    <div class="error-message" id="password-error">Please enter your password</div>
+                </div>
+                <button type="submit" class="login-btn">Sign in</button>
+                <div class="error-message" id="login-error">Invalid email or password</div>
+            </form>
+            <div class="login-footer">
+                <p>Don't have an account? <a href="#" id="create-account">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container" id="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-item active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-compass"></i>
+                <span>Explore</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-play-circle"></i>
+                <span>Shorts</span>
+            </div>
+            <div class="sidebar-item">
+               <i class="bi bi-collection-play-fill"></i>
+                <span>Subscriptions</span>
+            </div>
+            <hr>
+            <div class="sidebar-item">
+                <i class="fas fa-photo-video"></i>
+                <span>Library</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-play"></i>
+                <span>Your videos</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-clock"></i>
+                <span>Watch later</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-thumbs-up"></i>
+                <span>Liked videos</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fas fa-download"></i>
+                <span>Downloads</span>
+            </div>
+            <hr>
+            <h3>Subscriptions</h3>
+            <div class="subscription-channel">
+                <img src="https://yt3.ggpht.com/axEYZOoKZnFMu5YLA_YBRNxCKlGXlrBqRLRxEOFbYdadNpmdwEpAKD5XD_8WXtecL6Gh8bbwGg=s48-c-k-c0x00ffffff-no-rj" alt="Channel">
+                <span>API Tamil Songs</span>
+            </div>
+            <div class="subscription-channel">
+                <img src="https://yt3.ggpht.com/HCv0fXFEEcD0HRyF0_qR1K7b7qO3KCzmIoyH1DEJYB94CIUFhIE5i2t2IDIPX97W1-DK4hegww=s48-c-k-c0x00ffffff-no-rj" alt="Channel">
+                <span>Programming with Mosh</span>
+            </div>
+            <div class="subscription-channel">
+                <img src="https://yt3.ggpht.com/10iKRvxRHNx00HW9Ch2mQ5Mzuvm9Edv-c9s40uJ_KftC9zm7bzgIoNtDRZ6sLNwVYRdPPfszP1c=s48-c-k-c0x00ffffff-no-rj" alt="Channel">
+                <span>Error Makes Clever</span>
+            </div>
+            <div class="subscription-channel">
+                <img src="https://yt3.ggpht.com/0UrFW02_vRoTxrCcv4H6vSDXFwUPcafCf3oXIA6yMFUsVtIvE8EZdS2UMzbdscI7ifON_U7DHQ=s48-c-k-c0x00ffffff-no-rj" alt="Channel">
+                <span>Intellipaat</span>
+            </div>
+            <div class="subscription-channel">
+                <img src="https://yt3.ggpht.com/4FfycrkxlH3gF9HMpPqAmChY3kIH5gWdVNuYjqBGd5j0SpF-ALs6sVSfCQ-5qPyZYgJ79H0QKfA=s48-c-k-c0x00ffffff-no-rj" alt="Channel">
+                <span>WsCube Tech</span>
+            </div>
+            
+        </div>
+
+        <!-- Videos Container (Home Page) -->
+        <div class="videos-container" id="home-page">
+            <!-- Your Videos -->
+            <div class="video-card" onclick="loadVideo('nPrhOHl0IMk')">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/nPrhOHl0IMk/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">4:10</span>
+                </div>
+                <div class="video-details">
+                    <img src="https://yt3.ggpht.com/axEYZOoKZnFMu5YLA_YBRNxCKlGXlrBqRLRxEOFbYdadNpmdwEpAKD5XD_8WXtecL6Gh8bbwGg=s48-c-k-c0x00ffffff-no-rj" alt="Channel" class="channel-icon">
+                    <div class="video-info">
+                        <h3>Kanmoodi Thirakumbothu - 4K Video Song 5.1 | Sachein Movie Songs | Vijay | Genelia | Devi Sri Prasad</h3>
+                        <p>API Tamil Songs</p>
+                        <p>3M views  2 months ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="loadVideo('FYErehuSuuw')">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/FYErehuSuuw/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">1:39:38</span>
+                </div>
+                <div class="video-details">
+                    <img src="https://yt3.ggpht.com/10iKRvxRHNx00HW9Ch2mQ5Mzuvm9Edv-c9s40uJ_KftC9zm7bzgIoNtDRZ6sLNwVYRdPPfszP1c=s48-c-k-c0x00ffffff-no-rj" alt="Channel" class="channel-icon">
+                    <div class="video-info">
+                        <h3>Mastering HTML Basics and Beyond | Your Ultimate Guide to Begin Web Development 💻 in Tamil | EMC</h3>
+                        <p>Error Makes Clever</p>
+                        <p>2.6M views  2 years ago </p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="loadVideo('mDOrn0jHw3o')">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/mDOrn0jHw3o/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">11:32:38</span>
+                </div>
+                <div class="video-details">
+                    <img src="https://yt3.ggpht.com/0UrFW02_vRoTxrCcv4H6vSDXFwUPcafCf3oXIA6yMFUsVtIvE8EZdS2UMzbdscI7ifON_U7DHQ=s48-c-k-c0x00ffffff-no-rj" alt="Channel" class="channel-icon">
+                    <div class="video-info">
+                        <h3>Full Stack Web Development Full Course (2025) | Full Stack Web Development Course FREE | Intellipaat</h3>
+                        <p>Intellipaat</p>
+                        <p>15K views  3 days ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="loadVideo('Ux2X2Te20Wo')">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/Ux2X2Te20Wo/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">11:07:56</span>
+                </div>
+                <div class="video-details">
+                    <img src="https://yt3.ggpht.com/0UrFW02_vRoTxrCcv4H6vSDXFwUPcafCf3oXIA6yMFUsVtIvE8EZdS2UMzbdscI7ifON_U7DHQ=s48-c-k-c0x00ffffff-no-rj" alt="Channel" class="channel-icon">
+                    <div class="video-info">
+                        <h3>Artificial Intelligence Full Course (2025) | FREE AI Course For Beginners | Intellipaat</h3>
+                        <p>Intellipaat</p>
+                        <p>71K views  Streamed 2 weeks ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="loadVideo('Tef1e9FiSR0')">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/Tef1e9FiSR0/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">8:54</span>
+                </div>
+                <div class="video-details">
+                    <img src="https://yt3.ggpht.com/HCv0fXFEEcD0HRyF0_qR1K7b7qO3KCzmIoyH1DEJYB94CIUFhIE5i2t2IDIPX97W1-DK4hegww=s48-c-k-c0x00ffffff-no-rj" alt="Channel" class="channel-icon">
+                    <div class="video-info">
+                        <h3>The Complete Frontend Developer Roadmap</h3>
+                        <p>Programming with Mosh</p>
+                        <p>473K views  1 year ago </p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="loadVideo('qz0aGYrrlhU')">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/qz0aGYrrlhU/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">1:09:34</span>
+                </div>
+                <div class="video-details">
+                    <img src="https://yt3.ggpht.com/HCv0fXFEEcD0HRyF0_qR1K7b7qO3KCzmIoyH1DEJYB94CIUFhIE5i2t2IDIPX97W1-DK4hegww=s48-c-k-c0x00ffffff-no-rj" alt="Channel" class="channel-icon">
+                    <div class="video-info">
+                        <h3>HTML Tutorial for Beginners: HTML Crash Course</h3>
+                        <p>Programming with Mosh</p>
+                        <p>10M views  4 years ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="loadVideo('kunkYTKFNtI')">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/kunkYTKFNtI/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">4:17:12</span>
+                </div>
+                <div class="video-details">
+                    <img src="https://yt3.ggpht.com/4FfycrkxlH3gF9HMpPqAmChY3kIH5gWdVNuYjqBGd5j0SpF-ALs6sVSfCQ-5qPyZYgJ79H0QKfA=s48-c-k-c0x00ffffff-no-rj" alt="Channel" class="channel-icon">
+                    <div class="video-info">
+                        <h3>Digital Marketing with AI Full Course for Beginners in 4 HOURS - 2025 Updated [No Experience Needed]</h3>
+                        <p>WsCube Tech</p>
+                        <p>1.5M views  10 months ago </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Player Page (Hidden by default) -->
+        <div class="video-player-container" id="video-page" style="display: none;">
+            <div class="video-player">
+                <iframe id="video-iframe" width="100%" height="100%" src="" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+            <h1 class="video-title" id="video-title">Kanmoodi Thirakumbothu - 4K Video Song 5.1 | Sachein Movie Songs | Vijay | Genelia | Devi Sri Prasad</h1>
+            <div class="video-actions">
+                <div class="video-stats">
+                    <span id="video-views">3M views</span> • <span id="video-date">2 months ago</span>
+                </div>
+                <div class="action-buttons">
+                    <div class="action-btn">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span id="like-count">123K</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-thumbs-down"></i>
+                        <span>Dislike</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-share"></i>
+                        <span>Share</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>Save</span>
+                    </div>
+                </div>
+            </div>
+            <div class="channel-info">
+                <div class="channel-details">
+                    <img src="https://yt3.ggpht.com/axEYZOoKZnFMu5YLA_YBRNxCKlGXlrBqRLRxEOFbYdadNpmdwEpAKD5XD_8WXtecL6Gh8bbwGg=s48-c-k-c0x00ffffff-no-rj" alt="Channel" id="channel-icon">
+                    <div>
+                        <h3 class="channel-name" id="channel-name">Channel Name</h3>
+                        <p class="subscribers" id="subscribers">1.2M subscribers</p>
+                    </div>
+                </div>
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+            <div class="video-description">
+                <p id="video-description">Video description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+            </div>
+            <div class="comments-section">
+                <h3>123 Comments</h3>
+                <div class="comment">
+                    <img src="https://randomuser.me/api/portraits/women/9.jpg" alt="User">
+                    <div class="comment-content">
+                        <h4>nivas</h4>
+                        <p>This song is feel good.</p>
+                        <div class="comment-actions">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>1.2K</span>
+                            <i class="fas fa-thumbs-down"></i>
+                            <span>REPLY</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="User">
+                    <div class="comment-content">
+                        <h4>Another User</h4>
+                        <p>I like to hear this song and lyrics are very amazing!</p>
+                        <div class="comment-actions">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>856</span>
+                            <i class="fas fa-thumbs-down"></i>
+                            <span>REPLY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Videos Sidebar (Hidden by default) -->
+        <div class="recommended-videos" id="recommended-sidebar" style="display: none;">
+            <div class="recommended-video" onclick="loadVideo('kunkYTKFNtI')">
+                <div class="recommended-thumbnail">
+                    <img src="https://i.ytimg.com/vi/kunkYTKFNtI/hqdefault.jpg" alt="Thumbnail">
+                    <span class="recommended-duration">3:33</span>
+                </div>
+                <div class="recommended-info">
+                    <h4>Digital Marketing with AI Full Course for Beginners in 4 HOURS - 2025 Updated [No Experience Needed]</h4>
+                    <p>WsCube Tech</p>
+                    <p>1.5M views • 10 months ago</p>
+                </div>
+            </div>
+            <div class="recommended-video" onclick="loadVideo('FYErehuSuuw')">
+                <div class="recommended-thumbnail">
+                    <img src="https://i.ytimg.com/vi/FYErehuSuuw/hqdefault.jpg" alt="Thumbnail">
+                    <span class="recommended-duration">4:12</span>
+                </div>
+                <div class="recommended-info">
+                    <h4>Mastering HTML Basics and Beyond | Your Ultimate Guide to Begin Web Development 💻 in Tamil | EMC</h4>
+                    <p>Error Makes Clever</p>
+                    <p>2.6M views • 2 years ago</p>
+                </div>
+            </div>
+            <div class="recommended-video" onclick="loadVideo('mDOrn0jHw3o')">
+                <div class="recommended-thumbnail">
+                    <img src="https://i.ytimg.com/vi/mDOrn0jHw3o/hqdefault.jpg" alt="Thumbnail">
+                    <span class="recommended-duration">5:45</span>
+                </div>
+                <div class="recommended-info">
+                    <h4>Full Stack Web Development Full Course (2025) | Full Stack Web Development Course FREE | Intellipaat</h4>
+                    <p>Intellipaat</p>
+                    <p>15K views • 3 days ago</p>
+                </div>
+            </div>
+            <div class="recommended-video" onclick="loadVideo('Tef1e9FiSR0')">
+                <div class="recommended-thumbnail">
+                    <img src="https://i.ytimg.com/vi/Tef1e9FiSR0/hqdefault.jpg" alt="Thumbnail">
+                    <span class="recommended-duration">6:18</span>
+                </div>
+                <div class="recommended-info">
+                    <h4>HTML Tutorial for Beginners: HTML Crash Course</h4>
+                    <p>Programming with Mosh</p>
+                    <p>10M views • 4 years ago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Video data for your videos
+        const videoData = {
+            'nPrhOHl0IMk': {
+                title: 'Kanmoodi Thirakumbothu - 4K Video Song 5.1 | Sachein Movie Songs | Vijay | Genelia | Devi Sri Prasad',
+                views: '3M',
+                date: '2 months ago',
+                likes: '125K',
+                channel: 'API Tamil Songs',
+                subscribers: '2.5M subscribers',
+                description: 'apitamilsongs ​ Let your heart melt to the breezy vibes of "Kanmoodi Thirakumbothu", the soulful love song from the movie Sachein .',
+                channelIcon: 'https://yt3.ggpht.com/axEYZOoKZnFMu5YLA_YBRNxCKlGXlrBqRLRxEOFbYdadNpmdwEpAKD5XD_8WXtecL6Gh8bbwGg=s48-c-k-c0x00ffffff-no-rj',
+                thumbnail: 'https://i.ytimg.com/vi/nPrhOHl0IMk/hqdefault.jpg',
+                duration: '4:10'
+            },
+            'FYErehuSuuw': {
+                title: 'Mastering HTML Basics and Beyond | Your Ultimate Guide to Begin Web Development 💻 in Tamil | EMC',
+                views: '2.6 M',
+                date: '2 years ago',
+                likes: '78K',
+                channel: 'Error Makes Clever',
+                subscribers: '1.8M subscribers',
+                description: 'Are you ready to kickstart your career in web development? Look no further! In this comprehensive YouTube video, we have got you covered with everything you need to know about HTML – the backbone of web design.',
+                channelIcon: 'https://yt3.ggpht.com/10iKRvxRHNx00HW9Ch2mQ5Mzuvm9Edv-c9s40uJ_KftC9zm7bzgIoNtDRZ6sLNwVYRdPPfszP1c=s48-c-k-c0x00ffffff-no-rj',
+                thumbnail: 'https://i.ytimg.com/vi/FYErehuSuuw/hqdefault.jpg',
+                duration: '1:39:38'
+            },
+            'mDOrn0jHw3o': {
+                title: 'Full Stack Web Development Full Course (2025) | Full Stack Web Development Course FREE | Intellipaat',
+                views: '15K',
+                date: '3 days ago',
+                likes: '98K',
+                channel: 'Intellipaat',
+                subscribers: '1.2M subscribers',
+                description: 'Learn Full Stack Web Development from scratch with this in-depth course designed for beginners and aspiring developers.',
+                channelIcon: 'https://yt3.ggpht.com/0UrFW02_vRoTxrCcv4H6vSDXFwUPcafCf3oXIA6yMFUsVtIvE8EZdS2UMzbdscI7ifON_U7DHQ=s48-c-k-c0x00ffffff-no-rj',
+                thumbnail: 'https://i.ytimg.com/vi/mDOrn0jHw3o/hqdefault.jpg',
+                duration: '11:32:38'
+            },
+            'Ux2X2Te20Wo': {
+                title: 'Artificial Intelligence Full Course (2025) | FREE AI Course For Beginners | Intellipaat',
+                views: '71K',
+                date: 'Streamed 2 weeks ago',
+                likes: '45K',
+                channel: 'Intellipaat',
+                subscribers: '850K subscribers',
+                description: 'You will build and validate custom neural network models, explore EDA for data visualization, use Keras and Python for model tuning, and end with real-world AI project ideas to showcase your skills.',
+                channelIcon: 'https://yt3.ggpht.com/0UrFW02_vRoTxrCcv4H6vSDXFwUPcafCf3oXIA6yMFUsVtIvE8EZdS2UMzbdscI7ifON_U7DHQ=s48-c-k-c0x00ffffff-no-rj',
+                thumbnail: 'https://i.ytimg.com/vi/Ux2X2Te20Wo/hqdefault.jpg',
+                duration: '11:07:56'
+            },
+            'Tef1e9FiSR0': {
+                title: 'Complete Frontend Developer Roadmap',
+                views: '473k',
+                date: '1 year ago',
+                likes: '210K',
+                channel: 'Programming with Mosh',
+                subscribers: '1.5M subscribers',
+                description: 'Go from zero to a frontend developer in 12 months. This step-by-step roadmap covers the essential skills and latest technologies to become a frontend developer in 2024.',
+                channelIcon: 'https://yt3.ggpht.com/HCv0fXFEEcD0HRyF0_qR1K7b7qO3KCzmIoyH1DEJYB94CIUFhIE5i2t2IDIPX97W1-DK4hegww=s48-c-k-c0x00ffffff-no-rj',
+                thumbnail: 'https://i.ytimg.com/vi/Tef1e9FiSR0/hqdefault.jpg',
+                duration: '8:54'
+            },
+            'qz0aGYrrlhU': {
+                title: 'HTML Tutorial for Beginners: HTML Crash Course',
+                views: '10M',
+                date: '4 years ago',
+                likes: '156K',
+                channel: 'Programming with Mosh',
+                subscribers: '1.3M subscribers',
+                description: 'Start your web development career with HTML/CSS!🌐 This beginner-friendly tutorial covers the essentials.',
+                channelIcon: 'https://yt3.ggpht.com/HCv0fXFEEcD0HRyF0_qR1K7b7qO3KCzmIoyH1DEJYB94CIUFhIE5i2t2IDIPX97W1-DK4hegww=s48-c-k-c0x00ffffff-no-rj',
+                thumbnail: 'https://i.ytimg.com/vi/qz0aGYrrlhU/hqdefault.jpg',
+                duration: '1:09:34'
+            },
+            'kunkYTKFNtI': {
+                title: 'Digital Marketing with AI Full Course for Beginners in 4 HOURS - 2025 Updated [No Experience Needed]',
+                views: '1.5M',
+                date: '10 months ago',
+                likes: '112K',
+                channel: 'WsCube Tech',
+                subscribers: '950K subscribers',
+                description: 'Digital Marketing with AI Full Course for Beginners in 5 Hours - 2025 Updated [No Experience Needed]',
+                channelIcon: 'https://yt3.ggpht.com/4FfycrkxlH3gF9HMpPqAmChY3kIH5gWdVNuYjqBGd5j0SpF-ALs6sVSfCQ-5qPyZYgJ79H0QKfA=s48-c-k-c0x00ffffff-no-rj',
+                thumbnail: 'https://i.ytimg.com/vi/kunkYTKFNtI/hqdefault.jpg',
+                duration: '4:17:12'
+            }
+        };
+
+        // DOM Elements
+        const loginModal = document.getElementById('login-modal');
+        const userIcon = document.getElementById('user-icon');
+        const loginForm = document.getElementById('login-form');
+        const mainContainer = document.getElementById('main-container');
+        const homePage = document.getElementById('home-page');
+        const videoPage = document.getElementById('video-page');
+        const recommendedSidebar = document.getElementById('recommended-sidebar');
+        const emailInput = document.getElementById('login-email');
+        const passwordInput = document.getElementById('login-password');
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
+        const loginError = document.getElementById('login-error');
+
+        // Hide error messages initially
+        emailError.style.display = 'none';
+        passwordError.style.display = 'none';
+        loginError.style.display = 'none';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide login modal initially
+            loginModal.classList.remove('active');
+            
+            // Show main content by default (no login required)
+            mainContainer.style.display = 'flex';
+        });
+
+        // Populate video cards
+        function populateVideoCards() {
+            const videosContainer = document.getElementById('home-page');
+            videosContainer.innerHTML = '';
+            
+            Object.entries(videoData).forEach(([id, video]) => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                videoCard.innerHTML = `
+                    <div class="thumbnail">
+                        <img src="${video.thumbnail}" alt="Thumbnail">
+                        <span class="duration">${video.duration}</span>
+                    </div>
+                    <div class="video-details">
+                        <img src="${video.channelIcon}" alt="Channel" class="channel-icon">
+                        <div class="video-info">
+                            <h3>${video.title}</h3>
+                            <p>${video.channel}</p>
+                            <p>${video.views} • ${video.date}</p>
+                        </div>
+                    </div>
+                `;
+                videoCard.addEventListener('click', () => loadVideo(id));
+                videosContainer.appendChild(videoCard);
+            });
+        }
+
+        // Load video function
+        function loadVideo(videoId) {
+            homePage.style.display = 'none';
+            videoPage.style.display = 'block';
+            recommendedSidebar.style.display = 'block';
+
+            const video = videoData[videoId];
+            document.getElementById('video-iframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            document.getElementById('video-title').textContent = video.title;
+            document.getElementById('video-views').textContent = `${video.views} views`;
+            document.getElementById('video-date').textContent = video.date;
+            document.getElementById('like-count').textContent = video.likes;
+            document.getElementById('channel-icon').src = video.channelIcon;
+            document.getElementById('channel-name').textContent = video.channel;
+            document.getElementById('subscribers').textContent = video.subscribers;
+            document.getElementById('video-description').textContent = video.description;
+
+            // Populate recommended videos
+            recommendedSidebar.innerHTML = '';
+            Object.entries(videoData).forEach(([id, recVideo]) => {
+                if (id !== videoId) {
+                    const recVideoElement = document.createElement('div');
+                    recVideoElement.className = 'recommended-video';
+                    recVideoElement.innerHTML = `
+                        <div class="recommended-thumbnail">
+                            <img src="${recVideo.thumbnail}" alt="Thumbnail">
+                            <span class="recommended-duration">${recVideo.duration}</span>
+                        </div>
+                        <div class="recommended-info">
+                            <h4>${recVideo.title}</h4>
+                            <p>${recVideo.channel}</p>
+                            <p>${recVideo.views} • ${recVideo.date}</p>
+                        </div>
+                    `;
+                    recVideoElement.addEventListener('click', () => loadVideo(id));
+                    recommendedSidebar.appendChild(recVideoElement);
+                }
+            });
+        }
+
+        // Go back to home page
+        function goHome() {
+            homePage.style.display = 'grid';
+            videoPage.style.display = 'none';
+            recommendedSidebar.style.display = 'none';
+            document.getElementById('video-iframe').src = '';
+        }
+
+        // Validate email
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Event Listeners
+        userIcon.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling
+            loginModal.classList.toggle('active');
+        });
+
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+                // Reset form and errors
+                loginForm.reset();
+                emailError.style.display = 'none';
+                passwordError.style.display = 'none';
+                loginError.style.display = 'none';
+            }
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Reset error messages
+            emailError.style.display = 'none';
+            passwordError.style.display = 'none';
+            loginError.style.display = 'none';
+            
+            // Get form values
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            
+            // Validate form
+            let isValid = true;
+            
+            if (!email) {
+                emailError.textContent = 'Please enter your email';
+                emailError.style.display = 'block';
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                emailError.textContent = 'Please enter a valid email';
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!password) {
+                passwordError.style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Here you would normally make an API call to authenticate
+                // For this demo, we'll just check if both fields are filled
+                if (email && password) {
+                    // Successful login
+                    loginModal.classList.remove('active');
+                    
+                    // Change user icon to show logged in state
+                    userIcon.textContent = email.charAt(0).toUpperCase();
+                    userIcon.style.backgroundColor = '#ff0000'; // YouTube red
+                    
+                    // Reset form
+                    loginForm.reset();
+                } else {
+                    loginError.style.display = 'block';
+                }
+            }
+        });
+
+        document.querySelector('.logo').addEventListener('click', goHome);
+    </script>
+</body>
+</html>
